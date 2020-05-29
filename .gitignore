@@ -1,0 +1,16 @@
+**/*.class
+**/.project
+**/.classpath
+**/.settings/
+**/log/
+**/target/
+**/build/
+**/bin/
+**/.idea/
+**/*.iml
+**/*.iws
+**/.DS_Store
+.idea
+**/.idea
+.metadata
+**/.svn
