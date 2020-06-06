@@ -2,7 +2,7 @@ package py.com.poraplz.cursomc.module.direction.infraestructure.db.jpa;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import py.com.poraplz.cursomc.module.city.infraestructure.db.jpa.CityEntity;
+import py.com.poraplz.cursomc.module.city.infrastructure.db.jpa.CityEntity;
 import py.com.poraplz.cursomc.module.client.infraestructure.db.jpa.ClientEntity;
 
 import javax.persistence.*;

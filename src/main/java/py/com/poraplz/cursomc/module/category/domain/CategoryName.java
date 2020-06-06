@@ -6,4 +6,7 @@ public final class CategoryName extends StringValueObject {
     public CategoryName(String name) {
         super(name);
     }
+
+
+
 }

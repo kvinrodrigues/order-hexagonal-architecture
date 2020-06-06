@@ -2,45 +2,39 @@ package py.com.poraplz.cursomc.module.category.infrastructure.db.jpa;
 
 import py.com.poraplz.cursomc.module.category.domain.Category;
 import py.com.poraplz.cursomc.module.category.domain.CategoryRepository;
+import py.com.poraplz.cursomc.module.category.infrastructure.model.CategoryMapper;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public final class CategorySpringJpaAdapter implements CategoryRepository {
-    private final CategorySpringJpaRepository repository;
+public final class SpringJpaCategoryAdaptor implements CategoryRepository {
+    private final SpringJpaCategoryRepository repository;
 
-    public CategorySpringJpaAdapter(CategorySpringJpaRepository repository) {
+    public SpringJpaCategoryAdaptor(SpringJpaCategoryRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public Category save(Category category) {
-        CategoryEntity categoryEntity = CategoryMapper.toEntity(category);
-        return CategoryMapper.toObjectValue(
+        CategoryEntity categoryEntity = CategoryMapper.toEntityFrom(category);
+        return CategoryMapper.toObjectValueFrom(
                 repository.saveAndFlush(categoryEntity)
         );
-    }
-
-    @Override
-    public void remove(Category category) {
-        CategoryEntity categoryEntity = CategoryMapper.toEntity(category);
-        repository.delete(categoryEntity);
     }
 
     @Override
     public List<Category> getAll() {
         return repository.findAll()
                 .stream()
-                .map(CategoryMapper::toObjectValue)
+                .map(CategoryMapper::toObjectValueFrom)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Category> findById(Long id) {
         Optional<CategoryEntity> optionalCategory = repository.findById(id);
-        return Optional.of
-                (CategoryMapper.toObjectValue(optionalCategory.get())
-                );
+        return optionalCategory.map(CategoryMapper::toObjectValueFrom);
+
     }
 }

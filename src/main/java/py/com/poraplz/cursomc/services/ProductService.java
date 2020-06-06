@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import py.com.poraplz.cursomc.module.category.infrastructure.db.jpa.CategoryEntity;
 import py.com.poraplz.cursomc.module.product.infraestructure.db.jpa.ProductEntity;
 import py.com.poraplz.cursomc.module.shared.domain.exceptions.ObjectNotFound;
-import py.com.poraplz.cursomc.module.category.infrastructure.db.jpa.CategorySpringJpaRepository;
+import py.com.poraplz.cursomc.module.category.infrastructure.db.jpa.SpringJpaCategoryRepository;
 import py.com.poraplz.cursomc.module.product.domain.ProductRepository;
 
 import java.util.List;
@@ -16,11 +16,11 @@ import java.util.Optional;
 @Service
 public class ProductService {
     private ProductRepository repo;
-    private CategorySpringJpaRepository categorySpringJpaRepository;
+    private SpringJpaCategoryRepository springJpaCategoryRepository;
 
-    public ProductService(ProductRepository repo, CategorySpringJpaRepository categorySpringJpaRepository){
+    public ProductService(ProductRepository repo, SpringJpaCategoryRepository springJpaCategoryRepository){
         this.repo = repo;
-        this.categorySpringJpaRepository = categorySpringJpaRepository;
+        this.springJpaCategoryRepository = springJpaCategoryRepository;
     }
 
     public ProductEntity findById(Long id){
@@ -31,7 +31,7 @@ public class ProductService {
     public Page<ProductEntity> search(String name, List<Long> ids, Integer page, Integer linesPerPage,
                                       String column, String direction){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), column);
-        List<CategoryEntity> categories = categorySpringJpaRepository.findAllById(ids);
+        List<CategoryEntity> categories = springJpaCategoryRepository.findAllById(ids);
         return repo.findDistinctByNameContainingAndCategoriesIn(name, categories, pageRequest);
     }
 }

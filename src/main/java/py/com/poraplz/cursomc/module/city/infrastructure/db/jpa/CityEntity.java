@@ -1,4 +1,4 @@
-package py.com.poraplz.cursomc.module.city.infraestructure.db.jpa;
+package py.com.poraplz.cursomc.module.city.infrastructure.db.jpa;
 
 
 import lombok.Data;

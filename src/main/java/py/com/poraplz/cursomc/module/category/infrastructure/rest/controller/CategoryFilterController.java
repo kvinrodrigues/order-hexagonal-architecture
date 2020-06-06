@@ -1,10 +1,6 @@
 package py.com.poraplz.cursomc.module.category.infrastructure.rest.controller;
 
-import org.springframework.stereotype.Controller;
-import py.com.poraplz.cursomc.services.CategoryService;
-
-@Controller
-public class CategoriaFilterController {
+public class CategoryFilterController {
 
 
 //    @RequestMapping(name = "category/all", method = RequestMethod.GET)

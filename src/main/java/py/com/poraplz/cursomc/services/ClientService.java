@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import py.com.poraplz.cursomc.dto.client.ClientDTO;
 import py.com.poraplz.cursomc.dto.client.ClientNewDTO;
 import py.com.poraplz.cursomc.dto.client.ClientsDTO;
-import py.com.poraplz.cursomc.module.city.infraestructure.db.jpa.CityEntity;
+import py.com.poraplz.cursomc.module.city.infrastructure.db.jpa.CityEntity;
 import py.com.poraplz.cursomc.module.client.infraestructure.db.jpa.ClientEntity;
 import py.com.poraplz.cursomc.module.direction.infraestructure.db.jpa.DirectionEntity;
 import py.com.poraplz.cursomc.module.profile.domain.Profile;
@@ -35,15 +35,13 @@ public class ClientService {
     private DirectionRepository directionRepository;
     private CityRepository cityRepository;
     private BCryptPasswordEncoder encoder;
-    private UserService userService;
 
     public ClientService(ClientRepository clt, DirectionRepository directionRepository, CityRepository cityRepository,
-                         BCryptPasswordEncoder encoder, UserService userService){
+                         BCryptPasswordEncoder encoder){
         this.repo = clt;
         this.directionRepository = directionRepository;
         this.cityRepository = cityRepository;
         this.encoder = encoder;
-        this.userService = userService;
 
     }
 
